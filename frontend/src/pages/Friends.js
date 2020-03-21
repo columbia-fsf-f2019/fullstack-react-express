@@ -19,8 +19,9 @@ class Friends extends React.Component {
   render() {
     return (
       <Flex style={{ maxWidth: '900px' }}>
-        {this.state.friends.map(({ name, image, occupation, location }) => (
+        {this.state.friends.map(({ id, name, image, occupation, location }) => (
           <FriendCard
+            key={id}
             name={name}
             img={image}
             occupation={occupation}

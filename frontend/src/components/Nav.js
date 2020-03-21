@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 const Nav = ({ location }) => {
-  console.log(location);
   return (
     <div className="ui pointing menu">
       <Link
@@ -26,7 +25,7 @@ const Nav = ({ location }) => {
       <div className="right menu">
         <div className="item">
           <div className="ui transparent icon input">
-            <input type="text" placeholder="Search..." />
+            <input type="text" placeholder="Search friends..." />
             <i className="search link icon" />
           </div>
         </div>

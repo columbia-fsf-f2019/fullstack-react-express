@@ -12,6 +12,10 @@ const app = express();
 /* set-up middlewares */
 app.use(morgan('dev')); // logging
 app.use(bodyparser.json()); // parsing json data in request body
+if (process.env.NODE_ENV === 'production') {
+  // serve static files from frontend build output in prodcution
+  app.use(express.static('frontend/build'));
+}
 
 /* route handlers */
 app.get('/api/ping', (req, res) => res.send('pong'));

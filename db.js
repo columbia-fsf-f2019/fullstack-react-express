@@ -1,5 +1,5 @@
 module.exports = {
-  users: [
+  friends: [
     {
       id: 1,
       name: 'SpongeBob',

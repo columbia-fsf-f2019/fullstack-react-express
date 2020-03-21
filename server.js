@@ -17,11 +17,11 @@ app.use(bodyparser.json()); // parsing json data in request body
 app.get('/api/ping', (req, res) => res.send('pong'));
 
 app
-  .route('/api/users')
-  .get((req, res) => res.json(db.users))
+  .route('/api/friends')
+  .get((req, res) => res.json(db.friends))
   .post((req, res) => {
-    const newUserId = db.users.length + 1;
-    db.users.push({ ...req.body, id: newUserId });
+    const newUserId = db.friends.length + 1;
+    db.friends.push({ ...req.body, id: newUserId });
     res.status(201).json(newUserId);
   });
 

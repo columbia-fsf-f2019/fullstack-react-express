@@ -1,7 +1,12 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const morgan = require('morgan');
-const db = require('./db');
+const mongoose = require('mongoose');
+const Friend = require('./models/Friend');
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/friends', {
+  useNewUrlParser: true
+});
 
 /* constants */
 const PORT = process.env.PORT || 3001;
@@ -22,11 +27,13 @@ app.get('/api/ping', (req, res) => res.send('pong'));
 
 app
   .route('/api/friends')
-  .get((req, res) => res.json(db.friends))
-  .post((req, res) => {
-    const newUserId = db.friends.length + 1;
-    db.friends.push({ ...req.body, id: newUserId });
-    res.status(201).json(newUserId);
+  .get(async (req, res) => {
+    const friends = await Friend.find();
+    res.json(friends);
+  })
+  .post(async (req, res) => {
+    const response = Friend.create(req.body);
+    res.status(201).json(response);
   });
 
 /* run our app */

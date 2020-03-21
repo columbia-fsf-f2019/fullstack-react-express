@@ -9,7 +9,7 @@ class Friends extends Component {
     this.state = { friends: [] };
   }
   async componentDidMount() {
-    const response = await axios.get("http://localhost:3001/api/users");
+    const response = await axios.get("/api/users");
     const friends = response.data;
     this.setState({ friends });
   }

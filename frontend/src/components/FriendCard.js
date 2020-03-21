@@ -1,7 +1,7 @@
 import React from 'react';
 
-const UserCard = ({ name, img, occupation, location }) => (
-  <div className="ui card">
+const FriendCard = ({ name, img, occupation, location }) => (
+  <div className="ui card" style={{ width: '250px', margin: '15px' }}>
     <div className="image">
       <img src={img} />
     </div>
@@ -22,4 +22,4 @@ const UserCard = ({ name, img, occupation, location }) => (
   </div>
 );
 
-export default UserCard;
+export default FriendCard;
